@@ -1,0 +1,17 @@
+.a{
+
+    display:block;
+    width: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    border-radius: 10px;
+    margin: 150px 30px;
+    padding:15px 30px;
+    background-color: blueviolet;
+    color: darkgoldenrod;
+    text-decoration: none;
+
+}
+a:hover{
+    background-color: #ca557c;
+}

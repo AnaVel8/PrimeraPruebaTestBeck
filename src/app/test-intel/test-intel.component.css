@@ -1,0 +1,45 @@
+.preguntas-container {
+    max-width: 600px;
+    margin: 0 auto;
+    
+   
+  }
+  
+  .pregunta {
+    margin-bottom: 20px;
+    
+  }
+  
+  .respuestas {
+    list-style-type: none;
+    padding: 0;
+    
+  }
+  
+  .respuestas li {
+    margin-bottom: 5px;
+   
+  }
+  
+  button {
+    
+    display: block;
+    margin-inline: none;
+    padding: 10px 20px;
+    background-color: hsla(323, 100%, 50%, 0.747);
+    color: #fff;
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+
+  }
+  
+  button:hover {
+    background-color: #ca557c;
+  }
+  
+  .resultado {
+    margin-top: 20px;
+  }
+  
+  

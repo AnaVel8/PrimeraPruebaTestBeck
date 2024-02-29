@@ -1,0 +1,36 @@
+nav {
+    text-align: right;
+    background-color: #4c8baf; /* color de fondo verde */
+    padding: 15px 0; /* espaciado en la parte superior e inferior de la barra de navegación */
+  }
+  
+  nav > a {
+    color: white; /* color del texto blanco */
+    text-decoration: none; /* quitar subrayado */
+    padding: 14px 20px; /* espaciado en los elementos de la barra de navegación */
+    margin: 0 10px; /* margen entre los elementos de la barra de navegación */
+    border-radius: 5px; /* bordes redondeados */
+    transition: background-color 0.3s; /* transición suave para el cambio de color de fondo */
+  }
+  
+  nav > a:hover {
+    background-color: #4645a0; /* color de fondo más oscuro en el hover */
+  }
+  
+  nav > a.active {
+    background-color: #4645a0; /* color de fondo activo */
+  }
+  
+
+  @media screen  and(max-width:500px){
+  nav{
+    text-align: center;
+    padding: 30px 0 0 0;
+  }
+
+  nav > a{
+      margin-right: 5px;
+  }
+  
+  }
+ 

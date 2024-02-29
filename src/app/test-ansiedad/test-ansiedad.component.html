@@ -1,0 +1,23 @@
+
+<div class="caja1">
+  
+    <div class="preguntas-container">
+      <h1>Inventario de Ansiedad de Beck BAI</h1> 
+    
+      <hr>
+      <p>Lea cuidadosamente cada oración y piense de qué manera se aplica a usted. <br> 
+      En cada línea pregunta la opción que mejor describe su reacción a cada oración.</p><br>
+    
+     <div *ngFor="let pregunta of preguntas; let i = index" class="pregunta">
+        <h3>{{ pregunta.pregunta }}</h3>
+        <ul class="respuestas">
+          <li *ngFor="let respuesta of pregunta.respuestas">
+            <input type="radio" name="pregunta{{i}}" [value]="respuesta.valor" (change)="responderPregunta(i, respuesta.valor)">
+            {{ respuesta.descripcion }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    </div>
+    <button (click)="evaluarAnsiedad()" >Evaluar Ansiedad</button>
+    
