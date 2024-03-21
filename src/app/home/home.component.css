@@ -1,4 +1,31 @@
 /* app.component.css */
+
+
+.a {
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente el botón */
+  align-items: center; /* Centrar verticalmente el botón */
+  padding: 8px 16px; /* Ajustar el relleno */
+  background-color: hsla(323, 100%, 50%, 0.747);
+  color: #fff;
+  border: none;
+  border-radius: 20px; /* Reducir el radio de borde para que sea más redondeado */
+  cursor: pointer;
+}
+
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  .a {
+      padding: 6px 12px; /* Ajustar el relleno para dispositivos móviles */
+      font-size: 14px; /* Reducir el tamaño de fuente para dispositivos móviles */
+      border-radius: 15px; /* Reducir el radio de borde para dispositivos móviles */
+  }
+}
+
+a:hover{
+  background-color: #ca557c;
+}
+
 *{
 
     margin: 0;

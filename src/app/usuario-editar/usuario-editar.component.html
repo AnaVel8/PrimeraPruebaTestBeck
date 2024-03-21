@@ -1,0 +1,44 @@
+<app-progres-bar *ngIf="loading"></app-progres-bar>
+
+<div *ngIf="!loading" class="row mt-1">
+    
+  <div class="col-lg-4 offset-lg-4">
+        
+    <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
+    <div class="card-header text-center">{{ operacion }} Usuario</div>
+    <div class="card-body">
+        
+      <form [formGroup]="form" (ngSubmit)="agregarUsuario()">
+      <input formControlName="name" type="text" class="form-control" placeholder="Ingrese Nombre">
+      <span *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">
+        El campo Nombre es <strong>Requerido</strong>
+      </span>
+      
+      <input formControlName="apellidos" type="text" class="form-control mt-2" placeholder="Ingrese Apellidos">
+      <span *ngIf="form.get('apellidos')?.hasError('required') && form.get('apellidos')?.touched">
+        El campo Nombre es <strong>Requerido</strong>
+      </span>
+      
+      <input formControlName="edad" type="number" class="form-control mt-2" placeholder="Ingrese Edad">
+      <span *ngIf="form.get('edad')?.hasError('required') && form.get('edad')?.touched">
+        El campo Nombre es <strong>Requerido</strong>
+      </span>
+      
+      <input formControlName="diagnostico" type="text" class="form-control mt-2" placeholder="Diagnostico">
+      <span *ngIf="form.get('diagnostico')?.hasError('required') && form.get('diagnostico')?.touched">
+        El campo Nombre es <strong>Requerido</strong>
+      </span>
+      
+      <div class="row mt-2 text-center">
+        <div class="col-lg-6">
+            <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Aceptar</button>
+        </div>
+        <div class="col-lg-6">
+      <button routerLink="/usuarios" type="button" class="btn btn-secondary">Volver</button>
+    </div>
+    </div>
+    </form>
+    </div>
+  </div>
+</div>
+</div>

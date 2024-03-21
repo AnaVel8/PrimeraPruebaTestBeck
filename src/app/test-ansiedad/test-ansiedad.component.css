@@ -13,7 +13,7 @@
   
   /* Aplicar estilo a los elementos impares */
   .respuestas li:nth-child(odd) {
-    background-color: none; 
+    background-color: mediumspringgreen; 
     border-radius: 5px 10px;
   }
   
@@ -63,3 +63,21 @@
     margin-bottom: 5px;
   }
   
+  /* Estilos específicos para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  .caja1 {
+      max-width: 90%; /* Reducir el ancho en dispositivos móviles */
+  }
+
+  h1 {
+      font-size: 20px; /* Reducir el tamaño de la fuente del encabezado */
+  }
+
+  .pregunta {
+      font-size: 14px; /* Reducir el tamaño de la fuente de la pregunta */
+  }
+
+  h3 {
+      font-size: 13px; /* Reducir el tamaño de la fuente del subencabezado */
+  }
+}
