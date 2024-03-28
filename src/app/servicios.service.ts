@@ -3,6 +3,7 @@ import { environment } from '../enviroments/enviroment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Usuarios } from './registro-usuarios/registro-usuarios.component';
+import { AdminsComponent } from './admins/admins.component';
 
 @Injectable({
   providedIn: 'root'
@@ -37,4 +38,4 @@ export class UsuarioService {
 return this.http.put<void>(`${this.myAppUrl}${this.myApiUrl}${id}`, usuario)
    }
 }
- 
+

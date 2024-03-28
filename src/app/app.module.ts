@@ -23,6 +23,9 @@ import { LoginComponent } from './login/login.component';
 import { RegistroUsuariosComponent } from './registro-usuarios/registro-usuarios.component';
 import { UsuarioEditarComponent } from './usuario-editar/usuario-editar.component';
 import { ProgresBarComponent } from './shared/progres-bar/progres-bar.component';
+import { RegistroAdminComponent } from './registro-admin/registro-admin.component';
+import { AdminsComponent } from './admins/admins.component';
+//import { AdminsComponent } from './admins/admins.component';
 
 
 const appRoutes:Routes=[
@@ -36,7 +39,9 @@ const appRoutes:Routes=[
   {path: 'usuarios',component: RegistroUsuariosComponent},
   {path: '',component: RegistroUsuariosComponent},
   {path: 'add', component: UsuarioEditarComponent},
-  
+  {path: '', redirectTo:'login', pathMatch:'full'},
+  {path: 'login', component: LoginComponent},
+  {path: 'sigIn', component: RegistroAdminComponent},
   {path: 'edit/:id', component:UsuarioEditarComponent},
   {path: '**', redirectTo:'', pathMatch:'full'},
 
@@ -57,6 +62,9 @@ const appRoutes:Routes=[
     RegistroUsuariosComponent,
     UsuarioEditarComponent,
     ProgresBarComponent,
+    RegistroAdminComponent
+    //AdminsComponent,
+    
   
   
     

@@ -3,7 +3,7 @@
 <div class="wrapper">
     <div class="body">
         <img class="logo" src="../../assets/inicio-de-sesion-de-usuario.png" alt="img login">
-        <h1>Iniciar Sesion</h1>
+        <h1>Registro</h1>
         <div class="form-floating mb-3">
             <input type="text" [(ngModel)]="adminame" class="form-control"  placeholder="Nombre de Usuario">
             <label >Usuario</label>
@@ -12,10 +12,14 @@
             <input type="password" [(ngModel)]="password" class="form-control"  placeholder="Contraseña">
             <label >Contraseña</label>
           </div>
+          <div class="form-floating mb-3">
+            <input type="password" [(ngModel)]="confirmPassword" class="form-control"  placeholder="Contraseña">
+            <label > Repetir Contraseña</label>
+          </div>
           <div>
-          <button type="button" class="btn btn-primary btn-lg" (click)="login()">Aceptar</button>
+          <button type="button" (click)="addAdmin()" class="btn btn-primary btn-lg" >Aceptar</button>
         </div>
-        <p class="mt-3">¿No tienes cuenta? <a routerLink="/sigIn">Registrar</a></p> 
-    </div>
+         <a href="">Volver</a>
     
     </div>
+
