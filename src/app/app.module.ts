@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 //Modulos
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -25,6 +25,8 @@ import { UsuarioEditarComponent } from './usuario-editar/usuario-editar.componen
 import { ProgresBarComponent } from './shared/progres-bar/progres-bar.component';
 import { RegistroAdminComponent } from './registro-admin/registro-admin.component';
 import { AdminsComponent } from './admins/admins.component';
+import { addTokenInterceptor } from './add-token.interceptor';
+import { authGuard } from './auth.guard';
 //import { AdminsComponent } from './admins/admins.component';
 
 
@@ -36,7 +38,7 @@ const appRoutes:Routes=[
   {path:'testInteligencias',component: TestIntelComponent},
   {path:'quienes',component: SobreNosotrosComponent},
   {path:'contacto',component: ContactoComponent},
-  {path: 'usuarios',component: RegistroUsuariosComponent},
+  {path: 'usuarios',component: RegistroUsuariosComponent, canActivate: [authGuard]},
   {path: '',component: RegistroUsuariosComponent},
   {path: 'add', component: UsuarioEditarComponent},
   {path: '', redirectTo:'login', pathMatch:'full'},
@@ -83,7 +85,9 @@ const appRoutes:Routes=[
     }),
 
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: addTokenInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

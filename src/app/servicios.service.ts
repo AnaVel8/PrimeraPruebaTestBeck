@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../enviroments/enviroment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Usuarios } from './registro-usuarios/registro-usuarios.component';
 import { AdminsComponent } from './admins/admins.component';
@@ -18,6 +18,9 @@ export class UsuarioService {
   }
 
   getListUser(): Observable<Usuarios[]>{
+    /*const token = localStorage.getItem('token')
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}` )
+    return this.http.get<Usuarios[]>(`${this.myAppUrl}${this.myApiUrl}`, {headers: headers});*/
     return this.http.get<Usuarios[]>(`${this.myAppUrl}${this.myApiUrl}`);
   }
 

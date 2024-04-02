@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../servicios.service';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 export interface Usuarios{
   id?: number;
@@ -26,7 +27,7 @@ export class RegistroUsuariosComponent implements OnInit {
   listUsuarios: Usuarios[]=[];
   loading: boolean = false;
 
-  constructor(private _userService: UsuarioService, private toastr: ToastrService){
+  constructor(private _userService: UsuarioService, private router: Router){
     
   }
    ngOnInit(): void {
@@ -76,6 +77,11 @@ export class RegistroUsuariosComponent implements OnInit {
         });
       }
     });
+  }
+
+  logOut(){
+    localStorage.removeItem('token');
+    this.router.navigate(['/login'])
   }
   
 
