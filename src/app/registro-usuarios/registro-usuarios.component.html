@@ -4,32 +4,32 @@
 <div *ngIf="!loading" class="container mt -4">
     <div class="card">
         <div class="card-body">
-            <span class="h3">Registro de Usuarios</span>
+            <span class="h3">Lista de pacientes con diagnostico</span>
             <button class="btn btn-dark btn-lg float-right" routerLink="/add">Agregar Usuario </button>
-            <table *ngIf="listUsuarios.length > 0" class="table table-striped mt-5 ">
-                <thead>
-                  <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Edad</th>
-                    <th>Diagnostico</th>
-                    <th></th>
-                    
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let item of listUsuarios">
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.apellidos }}</td>
-                    <td>{{ item.edad }}</td>
-                    <td>{{ item.diagnostico}}</td>
-                    <td>
-                      <button routerLink="/edit/{{item.id}}" type="button" class="btn btn-info btn-sm ">Editar</button>
-                      <button (click)="deleteUser(item.id!)" type="button" class="btn btn-secondary btn-sm ">Eliminar</button>
-                    </td>
-                  </tr>
-                 </tbody>
-              </table>
+            <table #tabla class="table table-striped mt-5">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Edad</th>
+                  <th>Diagnostico</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listUsuarios; let i = index" [id]="'fila-' + i">
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.apellidos }}</td>
+                  <td>{{ item.edad }}</td>
+                  <td>{{ item.diagnostico }}</td>
+                  <td>
+                    <button routerLink="/edit/{{ item.id }}" type="button" class="btn btn-info btn-sm">Editar</button>
+                    <button (click)="deleteUser(item.id!)" type="button" class="btn btn-secondary btn-sm">Eliminar</button>
+                    <button (click)="imprimir(item)" type="button" class="btn btn-secondary btn-sm">Imprimir</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
               <h5 *ngIf="listUsuarios.length == 0">No hay usuarios para mostrar</h5>
         </div>
         <button class="btn btn-dark btn-lg " (click)="logOut()" type="button">Salir</button>

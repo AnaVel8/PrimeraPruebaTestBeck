@@ -8,7 +8,7 @@ const reglasBeck: RuleProperties[] = [
         { fact: 'puntajeTotal', operator: 'lessThanInclusive', value: 13 }
       ]
     },
-    event: { type: 'resultado', params: { resultado: 'Indicios de Mínima depresión' } }
+    event: { type: 'resultado', params: { resultado: 'Depresion ausente o minima' } }
   },
   {
     conditions: {

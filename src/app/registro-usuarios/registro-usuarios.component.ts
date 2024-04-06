@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UsuarioService } from '../servicios.service';
-import { ToastrService } from 'ngx-toastr';
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
+
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
@@ -24,12 +26,19 @@ export interface Usuarios{
 
 export class RegistroUsuariosComponent implements OnInit {
 
+
+    
+  
+  
+
   listUsuarios: Usuarios[]=[];
   loading: boolean = false;
 
   constructor(private _userService: UsuarioService, private router: Router){
     
   }
+
+  
    ngOnInit(): void {
     this.getListUsuarios();
    }
@@ -83,9 +92,27 @@ export class RegistroUsuariosComponent implements OnInit {
     localStorage.removeItem('token');
     this.router.navigate(['/login'])
   }
+
+  imprimir(item: any) {
+    const doc = new jspdf.jsPDF();
+    const filaId = 'fila-' + this.listUsuarios.indexOf(item);
+    const fila = document.getElementById(filaId);
+  
+    if (fila) {
+      html2canvas(fila).then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        doc.addImage(imgData, 'PNG', 10, 10, 180, 0);
+        doc.save('paciente_' + item.id + '.pdf');
+      });
+    } else {
+      console.error('La fila no se encontró:', filaId);
+    }
+  }
+  
+}
   
 
-}
+
 
 
 

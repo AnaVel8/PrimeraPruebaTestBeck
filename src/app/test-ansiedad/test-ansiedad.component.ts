@@ -3,11 +3,12 @@ import reglasBeck from './reglas-beck.component';
 import { PreguntaBeck, preguntasBeck } from './preguntas-beck';
 import { Engine } from 'json-rules-engine';
 import Swal from 'sweetalert2';
+import { HttpClient } from '@angular/common/http'; // Importa HttpClient para hacer solicitudes HTTP
 
 @Component({
   selector: 'app-test-ansiedad',
   templateUrl: './test-ansiedad.component.html',
-  styleUrl: './test-ansiedad.component.css'
+  styleUrls: ['./test-ansiedad.component.css']
 })
 export class TestAnsiedadComponent {
   preguntas: PreguntaBeck[] = preguntasBeck;
@@ -16,10 +17,12 @@ export class TestAnsiedadComponent {
   resultado: string = '';
   todasPreguntasRespondidas: boolean = false;
   mostrarResultadoFlag: boolean = false; // Nuevo flag para mostrar resultado
+  enviarCorreoFlag: boolean = false; // Flag para indicar si se desea enviar el correo
+  correoDestino: string = ''; // Correo electrónico destino para enviar el resultado
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.preguntas = preguntasBeck;
-  }
+  } // Inyecta HttpClient en el constructor
 
   evaluarAnsiedad() {
     if (!this.todasPreguntasRespondidas) {
@@ -43,8 +46,24 @@ export class TestAnsiedadComponent {
           if (result?.params?.['resultado']) {
             this.resultado = result.params['resultado'];
             this.mostrarResultadoFlag = true;
-            console.log("Resultado obtenido:", this.resultado);
-            this.mostrarResultado(); // Llamar a la función para mostrar el resultado
+
+            // Mostrar diálogo de confirmación
+            Swal.fire({
+              icon: 'question',
+              title: '¿Desea enviar el resultado por correo electrónico?',
+              showCancelButton: true,
+              confirmButtonText: 'Sí',
+              cancelButtonText: 'No'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.enviarCorreoFlag = true; // Marcar que se desea enviar el correo
+                this.solicitarCorreoDestino(); // Solicitar el correo destino al usuario
+              } else {
+                // Si el usuario no desea enviar el correo, muestra el resultado
+                this.mostrarResultado();
+              }
+            });
+
             break;
           }
         }
@@ -57,6 +76,56 @@ export class TestAnsiedadComponent {
           text: 'Ha ocurrido un error. Por favor, inténtalo de nuevo más tarde.'
         });
       });
+  }
+
+  // Función para solicitar el correo destino al usuario
+  solicitarCorreoDestino() {
+    Swal.fire({
+      icon: 'question',
+      title: 'Ingrese su correo electrónico',
+      input: 'email',
+      inputPlaceholder: 'Correo electrónico',
+      showCancelButton: true,
+      confirmButtonText: 'Enviar',
+      cancelButtonText: 'Cancelar',
+      preConfirm: (correo) => {
+        this.correoDestino = correo;
+        this.enviarResultadoPorCorreo(); // Enviar el resultado por correo electrónico
+      }
+    });
+  }
+
+  // Función para enviar el resultado por correo electrónico
+  enviarResultadoPorCorreo() {
+    // Realizar la solicitud HTTP para enviar el correo electrónico
+    
+    
+
+    this.http.post<any>('http://localhost:3000/correo/enviar-diagnostico', { correo: this.correoDestino, resultado: this.resultado }).subscribe({
+      next: (response) => {
+        if (response.ok) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Correo enviado',
+            text: 'El resultado se ha enviado por correo electrónico correctamente.'
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al enviar el correo electrónico',
+            text: 'Ha ocurrido un error al enviar el resultado por correo electrónico.'
+          });
+        }
+      },
+      error: (error) => {
+        console.error('Error al enviar el resultado por correo electrónico:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Ha ocurrido un error al enviar el resultado por correo electrónico. Por favor, inténtalo de nuevo más tarde.'
+        });
+      }
+    });
   }
 
   responderPregunta(preguntaIndex: number, respuestaValor: number) {
@@ -72,7 +141,7 @@ export class TestAnsiedadComponent {
   mostrarResultado() {
     Swal.fire({
       icon:'success',
-      title:'RESULTADO SRP',
+      title:'RESULTADO Test de Ansiedad',
       text: this.resultado,
       confirmButtonText: 'OK'
      }).then((result)=>{

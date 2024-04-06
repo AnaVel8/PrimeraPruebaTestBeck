@@ -8,7 +8,7 @@ const reglasBeck: RuleProperties[] = [
         { fact: 'puntajeTotal', operator: 'lessThanInclusive', value: 13 }
       ]
     },
-    event: { type: 'resultado', params: { resultado: 'Indicios de Mínima depresión' } }
+    event: { type: 'resultado', params: { resultado: 'Ansiedad aucente o minima' } }
   },
   {
     conditions: {
@@ -17,7 +17,7 @@ const reglasBeck: RuleProperties[] = [
         { fact: 'puntajeTotal', operator: 'lessThanInclusive', value: 19 }
       ]
     },
-    event: { type: 'resultado', params: { resultado: 'Depresión leve' } }
+    event: { type: 'resultado', params: { resultado: 'Ansiedad leve' } }
   },
   {
     conditions: {
@@ -26,7 +26,7 @@ const reglasBeck: RuleProperties[] = [
         { fact: 'puntajeTotal', operator: 'lessThanInclusive', value: 28 }
       ]
     },
-    event: { type: 'resultado', params: { resultado: 'Depresión moderada' } }
+    event: { type: 'resultado', params: { resultado: 'Ansiedad moderada' } }
   },
   {
     conditions: {
@@ -35,7 +35,7 @@ const reglasBeck: RuleProperties[] = [
         { fact: 'puntajeTotal', operator: 'lessThanInclusive', value: 63 }
       ]
     },
-    event: { type: 'resultado', params: { resultado: 'Depresión grave' } }
+    event: { type: 'resultado', params: { resultado: 'Ansiedad grave' } }
   }
 ];
 
