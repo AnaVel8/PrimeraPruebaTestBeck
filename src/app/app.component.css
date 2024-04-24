@@ -1,24 +1,42 @@
 nav {
-    text-align: right;
-    background-color: #4c8baf; /* color de fondo verde */
-    padding: 15px 0; /* espaciado en la parte superior e inferior de la barra de navegación */
-  }
-  
-  nav > a {
-    color: white; /* color del texto blanco */
-    text-decoration: none; /* quitar subrayado */
-    padding: 14px 20px; /* espaciado en los elementos de la barra de navegación */
-    margin: 0 10px; /* margen entre los elementos de la barra de navegación */
-    border-radius: 5px; /* bordes redondeados */
-    transition: background-color 0.3s; /* transición suave para el cambio de color de fondo */
-  }
-  
-  nav > a:hover {
-    background-color: #4645a0; /* color de fondo más oscuro en el hover */
-  }
-  
-  nav > a.active {
-    background-color: #4645a0; /* color de fondo activo */
-  }
-   
+  text-align: right;
+  background-color: #2b91a3; /* color de fondo verde */
+  padding: 15px 0; /* espaciado en la parte superior e inferior de la barra de navegación */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1); /* agregar sombra */
+}
+
+nav > a {
+  color: white; /* color del texto blanco */
+  text-decoration: none; /* quitar subrayado */
+  padding: 14px 20px; /* espaciado en los elementos de la barra de navegación */
+  margin: 0 10px; /* margen entre los elementos de la barra de navegación */
+  border-radius: 5px; /* bordes redondeados */
+  transition: background-color 0.3s; /* transición suave para el cambio de color de fondo */
+  position: relative; /* posición relativa para el brillo */
+  z-index: 1; /* elevar por encima de la sombra */
+}
+
+nav > a::before {
+  content: ''; /* contenido pseudo-elemento */
+  position: absolute; /* posición absoluta */
+  top: 0; /* alinear arriba */
+  left: 0; /* alinear izquierda */
+  width: 100%; /* ancho completo */
+  height: 100%; /* altura completa */
  
+  border-radius: 5px; /* bordes redondeados */
+  z-index: -1; /* colocar detrás del enlace */
+  transition: opacity 0.3s; /* transición suave para la opacidad */
+}
+
+nav > a:hover::before {
+  opacity: 0.1; /* reducir la opacidad en hover */
+}
+
+nav > a:hover {
+  background-color: #2723e6; /* color de fondo más oscuro en el hover */
+}
+
+nav > a.active {
+  background-color: #0f0cce; /* color de fondo activo */
+}

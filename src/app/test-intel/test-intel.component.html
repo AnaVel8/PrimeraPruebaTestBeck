@@ -1,30 +1,29 @@
-
-<div class="preguntas-container">
-    <h1>Test de Inteligencias Multiples</h1>
-
-    <hr>
-    <p>Lea cuidadosamente cada oración y piense de que manera se aplica a usted, <br> 
-    En cada linea pregunta la opcion que mejor describe su reaccion a cada oracion</p><br>
-
-    <div>
- <form>
-<div *ngFor="let question of questions; let i= index" class="pregunta">
-    <p><strong>{{question}}</strong></p>
-    <label *ngFor="let option of options; let j= index">
-       <input type="radio" [(ngModel)]="selections[i]" [value]="j+1" [name]="'question' + i"> {{option}} &nbsp;
-    
-    </label>
+<div class="caja1">
+    <div class="respuestas">
+      <h1>Test de Inteligencias Multiples</h1>
   
-</div>
-
- </form>
- <br>
- <hr>
-
- <button  (click)="calculateSum()"> Determinar tipo de SPR</button>
- <br>
-
-
-</div>
-
-</div>
+      <hr>
+      <p>Lea cuidadosamente cada oración y piense de qué manera se aplica a usted. <br> 
+      En cada línea pregunta la opción que mejor describe su reacción a cada oración.</p><br>
+  
+      <div>
+        <form>
+          <div *ngFor="let question of questions; let i= index" class="pregunta">
+            <h3><strong>{{question}}</strong></h3>
+            <ul class="respuestas">
+              <li *ngFor="let option of options; let j= index">
+                <input type="radio" [(ngModel)]="selections[i]" [value]="j+1" [name]="'question' + i">
+                {{option}} &nbsp;
+              </li>
+            </ul>
+          </div>
+        </form>
+        <br>
+        <hr>
+  
+        <button (click)="calculateSum()">Determinar tipo de SPR</button>
+        <br>
+      </div>
+    </div>
+  </div>
+  

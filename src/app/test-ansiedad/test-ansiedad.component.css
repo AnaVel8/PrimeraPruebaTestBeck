@@ -7,13 +7,13 @@
   
   /* Aplicar estilo a los elementos pares */
   .respuestas li:nth-child(even) {
-    background-color: #f083a7;
+   
     border-radius: 10px 5px;
   }
   
   /* Aplicar estilo a los elementos impares */
   .respuestas li:nth-child(odd) {
-    background-color: mediumspringgreen; 
+    background-color: #83f0959c;
     border-radius: 5px 10px;
   }
   
@@ -25,7 +25,7 @@
     display: block;
     margin: 20px auto; /* Mover el botón al centro */
     padding: 10px 20px;
-    background-color: hsla(323, 100%, 50%, 0.747);
+    background-color: hsla(234, 100%, 50%, 0.747);
     color: #fff;
     border: none;
     border-radius: 35px;
@@ -33,7 +33,7 @@
   }
   
   button:hover {
-    background-color: #ca557c;
+    background-color: #55b8ca94;
   }
   
   .resultado {
@@ -46,7 +46,7 @@
   }
   
   h1 {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 24px;
     margin-bottom: 10px;
   }
@@ -61,6 +61,7 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 15px;
     margin-bottom: 5px;
+    color: #0c5a19cc;
   }
   
   /* Estilos específicos para dispositivos móviles */
