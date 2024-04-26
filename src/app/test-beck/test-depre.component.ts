@@ -18,7 +18,9 @@ export class TestBeckComponent {
   todasPreguntasRespondidas: boolean = false;
   mostrarResultadoFlag: boolean = false; // Nuevo flag para mostrar resultado
   enviarCorreoFlag: boolean = false; // Flag para indicar si se desea enviar el correo
-  correoDestino: string = ''; // Correo electrónico destino para enviar el resultado
+  correoDestino: string = '';
+  sintomasSomaticos: number = 0; // Propiedad de la clase para almacenar los síntomas somáticos
+  sintomasCognitivos: number = 0; // Propiedad de la clase para almacenar los síntomas cognitivos
 
   constructor(private http: HttpClient) {
     this.preguntas = preguntasBeck;
@@ -34,7 +36,24 @@ export class TestBeckComponent {
       return;
     }
   
+    // Calcular el puntaje total
     this.puntajeTotal = this.respuestasUsuario.reduce((total, respuesta) => total + (respuesta || 0), 0);
+  
+    // Contadores para síntomas somáticos y cognitivos
+    this.sintomasSomaticos = 0;
+    this.sintomasCognitivos = 0;
+  
+    // Iterar sobre las respuestas del usuario y contar los síntomas somáticos y cognitivos
+    this.respuestasUsuario.forEach((respuesta, index) => {
+      // Verificar si el ítem es somático o cognitivo
+      if (index < 13) {
+        this.sintomasCognitivos += respuesta || 0;
+      } else {
+        this.sintomasSomaticos += respuesta || 0;
+      }
+    });
+  
+    // Ejecutar el motor de reglas para determinar el resultado
     const engine = new Engine();
     reglasBeck.forEach((regla: any) => engine.addRule(regla));
     const facts = { puntajeTotal: this.puntajeTotal };
@@ -46,14 +65,15 @@ export class TestBeckComponent {
           if (result?.params?.['resultado']) {
             this.resultado = result.params['resultado'];
             this.mostrarResultadoFlag = true;
-
-            // Mostrar diálogo de confirmación
+  
+            // Mostrar diálogo de confirmación y el resultado
             Swal.fire({
               icon: 'question',
               title: '¿Desea enviar el resultado por correo electrónico?',
               showCancelButton: true,
               confirmButtonText: 'Sí',
-              cancelButtonText: 'No'
+              cancelButtonText: 'No',
+              html: `Síntomas somáticos: ${this.sintomasSomaticos}<br>Síntomas cognitivos: ${this.sintomasCognitivos}<br>Resultado: ${this.resultado}`
             }).then((result) => {
               if (result.isConfirmed) {
                 this.enviarCorreoFlag = true; // Marcar que se desea enviar el correo
@@ -63,13 +83,13 @@ export class TestBeckComponent {
                 this.mostrarResultado();
               }
             });
-
+  
             break;
           }
         }
       })
       .catch(error => {
-        console.error('Error al evaluar la depresion:', error);
+        console.error('Error al evaluar la depresión:', error);
         Swal.fire({
           icon: 'error',
           title: 'Error',
@@ -77,6 +97,7 @@ export class TestBeckComponent {
         });
       });
   }
+  
 
   // Función para solicitar el correo destino al usuario
   solicitarCorreoDestino() {
@@ -98,16 +119,20 @@ export class TestBeckComponent {
   // Función para enviar el resultado por correo electrónico
   enviarResultadoPorCorreo() {
     // Realizar la solicitud HTTP para enviar el correo electrónico
-    
-    
-
-    this.http.post<any>('http://localhost:3000/correo/enviar-diagnostico', { correo: this.correoDestino, resultado: this.resultado }).subscribe({
+    this.http.post<any>('http://localhost:3000/correo/enviar-diagnostico', { 
+     correo: this.correoDestino,
+     resultado: this.resultado,
+     sintomasSomaticos: this.sintomasSomaticos,
+     sintomasCognitivos: this.sintomasCognitivos }).subscribe({
       next: (response) => {
         if (response.ok) {
           Swal.fire({
             icon: 'success',
             title: 'Correo enviado',
             text: 'El resultado se ha enviado por correo electrónico correctamente.'
+          }).then(() => {
+          
+window.location.reload();
           });
         } else {
           Swal.fire({
@@ -127,6 +152,7 @@ export class TestBeckComponent {
       }
     });
   }
+  
 
   responderPregunta(preguntaIndex: number, respuestaValor: number) {
     this.respuestasUsuario[preguntaIndex] = respuestaValor;
@@ -151,5 +177,7 @@ export class TestBeckComponent {
      });
     
   }
+
+  
 
 }
