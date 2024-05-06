@@ -16,6 +16,11 @@ import Swal from 'sweetalert2';
 
 export class TestIntelComponent {
 
+  preguntaActual: number = 0;
+
+  
+  
+
   
 
   questions :string[]= [
@@ -65,6 +70,13 @@ export class TestIntelComponent {
     "A veces",
     "Frecuentemente",
     "Casi Siempre"
+  ];
+
+  
+  imagenes: string[] = [
+    'assets/images1.jpg',
+    'assets/images2.jpg',
+    
   ];
 
 
@@ -157,5 +169,22 @@ export class TestIntelComponent {
 
     }
 }
+navegarPregunta(delta: number) {
+  // Verificar si se está intentando avanzar a una pregunta válida
+  if (delta === 1 && this.selections[this.preguntaActual] === 0) {
+      Swal.fire({
+          icon: 'warning',
+          title: 'Oops',
+          text: 'Por favor, selecciona una respuesta antes de pasar a la siguiente pregunta.'
+      });
+  } else {
+      const nuevaPregunta = this.preguntaActual + delta;
+      if (nuevaPregunta >= 0 && nuevaPregunta < this.questions.length) {
+          this.preguntaActual = nuevaPregunta;
+      }
+  }
+}
+
+
 
 }

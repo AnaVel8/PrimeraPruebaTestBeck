@@ -21,10 +21,35 @@ export class TestBeckComponent {
   correoDestino: string = '';
   sintomasSomaticos: number = 0; // Propiedad de la clase para almacenar los síntomas somáticos
   sintomasCognitivos: number = 0; // Propiedad de la clase para almacenar los síntomas cognitivos
+  preguntaActual: number = 0;
 
   constructor(private http: HttpClient) {
     this.preguntas = preguntasBeck;
   }
+  imagenes: string[] = [
+    'assets/depresion/1.jpg',
+    'assets/depresion/2.jpg',
+    'assets/depresion/3.jpg',
+    'assets/depresion/4.jpg',
+    'assets/depresion/5.jpg',
+    'assets/depresion/6.jpg',
+    'assets/depresion/7.jpg',
+    'assets/depresion/8.jpg',
+    'assets/depresion/9.jpg',
+    'assets/depresion/10.jpg',
+    'assets/depresion/11.jpg',
+    'assets/depresion/12.jpg',
+    'assets/depresion/13.jpg',
+    'assets/depresion/14.jpg',
+    'assets/depresion/15.jpg',
+    'assets/depresion/16.jpg',
+    'assets/depresion/17.jpg',
+    'assets/depresion/18.jpg',
+    'assets/depresion/19.jpg',
+    'assets/depresion/20.jpg',
+    'assets/depresion/21.jpg',
+    
+  ];
 
   evaluarDepresion() {
     if (!this.todasPreguntasRespondidas) {
@@ -132,7 +157,7 @@ export class TestBeckComponent {
             text: 'El resultado se ha enviado por correo electrónico correctamente.'
           }).then(() => {
           
-window.location.reload();
+            window.location.href = '/#niveles-depresion';
           });
         } else {
           Swal.fire({
@@ -163,21 +188,35 @@ window.location.reload();
     // Verificar si todas las preguntas han sido respondidas al menos una vez
     this.todasPreguntasRespondidas = this.respuestasUsuario.every(respuesta => respuesta !== null);
   }
-
   mostrarResultado() {
     Swal.fire({
-      icon:'success',
-      title:'RESULTADO Test de Depresion',
+      icon: 'success',
+      title: 'RESULTADO Test de Depresion',
       text: this.resultado,
       confirmButtonText: 'OK'
-     }).then((result)=>{
-      if(result.value){
-        location.reload();
+    }).then((result) => {
+      if (result.value) {
+        window.location.href = '/#niveles-depresion';
+        // Esto redirigirá a la ruta principal con el fragmento #niveles-depresion
       }
-     });
-    
+    });
   }
-
   
+
+  navegarPregunta(delta: number) {
+    // Verificar si se está intentando avanzar a una pregunta válida
+    if (delta === 1 && this.respuestasUsuario[this.preguntaActual] === null) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Opss',
+            text: 'Por favor, selecciona una respuesta antes de pasar a la siguiente pregunta.'
+        });
+    } else {
+        const nuevaPregunta = this.preguntaActual + delta;
+        if (nuevaPregunta >= 0 && nuevaPregunta < this.preguntas.length) {
+            this.preguntaActual = nuevaPregunta;
+        }
+    }
+}
 
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,13 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
-  
 
+  mostrarVentanaEmergente(titulo: string, texto: string) {
+    Swal.fire({
+      title: titulo,
+      text: texto,
+      confirmButtonText: 'OK'
+    });
+  }
+  
 }

@@ -1,24 +1,38 @@
-
-<div class="caja1">
-  
-<div class="preguntas-container">
-  <h1>Inventario de Depresión de Beck BDI</h1> 
-
+<div class="pregunta-container">
+  <h1 class="titulo">Inventario de Depresión de Beck BDI</h1>
   <hr>
-  <p>Lea cuidadosamente cada oración y piense de qué manera se aplica a usted. <br> 
-  En cada línea pregunta la opción que mejor describe su reacción a cada oración.</p><br>
+  <p class="instrucciones">Este cuestionario consta de 21 grupos de afirmaciones. Por favor, lea con
+    atención cada uno de ellos cuidadosamente. Luego elija uno de cada grupo, el que mejor
+    describa el modo como se ha sentido las últimas dos semanas, incluyendo el día de hoy.
+    Marque el enunciado correspondiente, Si varios
+    enunciados de un mismo grupo le parecen igualmente apropiados, marque el número más
+    alto. Verifique que no haya elegido más de uno por grupo, incluyendo el ítem 16 (cambios
+    en los hábitos de Sueño) y el ítem 18 (cambios en el apetito) </p>
+  <p class="instrucciones">En cada línea pregunta la opción que mejor describe su reacción a cada oración.</p>
 
- <div *ngFor="let pregunta of preguntas; let i = index" class="pregunta">
-    <h3>{{ pregunta.pregunta }}</h3>
-    <ul class="respuestas">
-      <li *ngFor="let respuesta of pregunta.respuestas">
-        <input type="radio" name="pregunta{{i}}" [value]="respuesta.valor" (change)="responderPregunta(i, respuesta.valor)">
-        {{ respuesta.descripcion }}
-      </li>
-    </ul>
+  <div class="contenido">
+    <div class="preguntas">
+      <div class="pregunta">
+        <h3 class="pregunta-texto">{{ preguntas[preguntaActual].pregunta }}</h3>
+        <ul class="respuestas">
+          <li *ngFor="let respuesta of preguntas[preguntaActual].respuestas">
+            <input type="radio" name="respuesta" [checked]="respuesta.valor === respuestasUsuario[preguntaActual]" (change)="responderPregunta(preguntaActual, respuesta.valor)">
+            <label>{{ respuesta.descripcion }}</label>
+          </li>
+        </ul>
+      </div>
+      <div class="botones-navegacion">
+        <button class="boton-atras" (click)="navegarPregunta(-1)" [disabled]="preguntaActual === 0">Atrás</button>
+        <button class="boton-siguiente" (click)="navegarPregunta(1)" [disabled]="preguntaActual === preguntas.length - 1">Siguiente</button>
+       
+      </div>
+      <div class="evaluacion-container" *ngIf="preguntaActual === preguntas.length - 1">
+        <button class="boton-finalizar" (click)="evaluarDepresion()">Evaluar Depresion</button>
+      </div>
+    </div>
+    <div class="imagen-container">
+      <img [src]="imagenes[preguntaActual]" alt="">
+    </div>
   </div>
 </div>
-</div>
-<button (click)="evaluarDepresion()" >Evaluar Depresión</button>
-
 

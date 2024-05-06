@@ -1,3 +1,5 @@
+//reglas beck
+
 import { RuleProperties } from 'json-rules-engine';
 
 const reglasBeck: RuleProperties[] = [

@@ -1,29 +1,37 @@
-<div class="caja1">
-    <div class="respuestas">
-      <h1>Test de Inteligencias Multiples</h1>
-  
+<div class="pregunta-container">
+  <div class="contenido">
+    <div class="preguntas">
+      <h1 class="titulo">Test de Métodos de Aprendizaje</h1>
       <hr>
-      <p>Lea cuidadosamente cada oración y piense de qué manera se aplica a usted. <br> 
-      En cada línea pregunta la opción que mejor describe su reacción a cada oración.</p><br>
-  
-      <div>
-        <form>
-          <div *ngFor="let question of questions; let i= index" class="pregunta">
-            <h3><strong>{{question}}</strong></h3>
-            <ul class="respuestas">
-              <li *ngFor="let option of options; let j= index">
-                <input type="radio" [(ngModel)]="selections[i]" [value]="j+1" [name]="'question' + i">
-                {{option}} &nbsp;
-              </li>
-            </ul>
-          </div>
-        </form>
-        <br>
-        <hr>
-  
-        <button (click)="calculateSum()">Determinar tipo de SPR</button>
-        <br>
+      <p class="instrucciones">Lea cuidadosamente cada oración y piense de qué manera se aplica a usted.</p>
+      <p class="instrucciones">En cada línea pregunta la opción que mejor describe su reacción a cada oración.</p>
+
+      <div *ngIf="questions.length > 0">
+        <div class="pregunta">
+          <h3 class="pregunta-texto">{{ questions[preguntaActual] }}</h3>
+          <ul class="respuestas">
+            <li *ngFor="let option of options; let j= index">
+              <input type="radio" [(ngModel)]="selections[preguntaActual]" [value]="j+1" [name]="'question' + preguntaActual" id="option{{j}}">
+              <label for="option{{j}}">{{option}}</label>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
+
+    <div class="imagen-container">
+      <img [src]="imagenes[preguntaActual]" alt="">
+    </div>
   </div>
-  
+
+  <div class="botones-navegacion">
+    <button class="boton-atras" (click)="navegarPregunta(-1)" [disabled]="preguntaActual === 0">Atrás</button>
+    <button class="boton-siguiente" (click)="navegarPregunta(1)" [disabled]="preguntaActual === questions.length - 1">Siguiente</button>
+  </div>
+
+  <div  class="evaluacion-container" *ngIf="preguntaActual === questions.length - 1">
+    <button class="boton-finalizar" (click)="calculateSum()">Determinar tipo de SPR</button>
+  </div>
+</div>
+
+

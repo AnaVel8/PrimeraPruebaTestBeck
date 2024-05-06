@@ -1,3 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif; /* Aplica la fuente Roboto a todos los elementos */
+}
+
+
+
+
 .a {
   display: inline-flex;
   justify-content: center; /* Centrar horizontalmente el botón */
@@ -64,12 +74,12 @@ body {
 
 header {
   width: 100%;
-  height: 600px;
+  height: 650px;
   background: #bc4e9c;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, hsla(229, 95%, 63%, 0.459), hsla(150, 62%, 50%, 0.664)), url(/assets/salud-mental2.png);
+  background: -webkit-linear-gradient(to right, hsla(229, 95%, 63%, 0.459), hsla(150, 62%, 50%, 0.664)), url(/assets/principal.jpg);
   /* Chrome 10-25, Safari 5.1-6 */                    /*340, 95%, 50%, 0.459*/      /*317, 45%, 52%, 0.664*/
-  background: linear-gradient(to right, hsla(202, 88%, 74%, 0.459), hsla(138, 82%, 67%, 0.664)), url(/assets/salud-mental2.png);
+  background: linear-gradient(to right, hsla(202, 88%, 74%, 0.459), hsla(138, 82%, 67%, 0.664)), url(/assets/principal.jpg);
   /* W3C, IE 10+/ Edge, Firefox 16+,  */     /*340, 95%, 50%, 0.459*/        /*317, 45%, 52%, 0.664*/
   background-size: cover;
   background-attachment: fixed;
@@ -153,6 +163,7 @@ main .sobre-nosotros{
 
 .sobre-nosotros .contenido-textos{
   width: 48%;
+
 }
 
 .contenido-textos h3{
@@ -181,34 +192,48 @@ main .sobre-nosotros{
 /* Galeria */
 
 
-.portafolio{
+.portafolio {
   background: #f2f2f2;
 }
 
-.galeria-port{
+.contenedor {
+  padding: 20px; /* Ajusta el padding según sea necesario */
+}
+
+.titulo {
+  font-size: 28px; /* Tamaño de fuente del título */
+  text-align: center; /* Centrar el texto */
+}
+
+.galeria-port {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-wrap: wrap;
+  
 }
 
 .imagen-port {
-  width:24%;
-  margin-bottom: 10px;
-  height: 100px;
+  width: calc(25% - 20px); /* Ajusta el ancho según el número de imágenes por fila */
+  margin-bottom: 20px; /* Ajusta el margen inferior según sea necesario */
   overflow: hidden;
   position: relative;
   cursor: pointer;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
+  font-size: 12px;
+  text-align: center;
+  background: -webkit-linear-gradient(to right, hsla(229, 95%, 63%, 0.459), hsla(150, 62%, 50%, 0.664));
+  /* Chrome 10-25, Safari 5.1-6 */                    /*340, 95%, 50%, 0.459*/      /*317, 45%, 52%, 0.664*/
+  background: linear-gradient(to right, hsla(202, 88%, 74%, 0.459), hsla(138, 82%, 67%, 0.664));
+  
 }
 
-.imagen-port > img {
+.imagen-port img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
-  display: block;
 }
 
-.hover-galeria{
+.hover-galeria {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -221,18 +246,29 @@ main .sobre-nosotros{
   align-items: center;
   flex-direction: column;
 }
+h5 {
+  font-size: 18px; /* Tamaño de fuente */
+  font-weight: bold; /* Peso de la fuente */
+  margin-top: 10px; /* Espaciado superior */
+  margin-bottom: 10px; /* Espaciado inferior */
+  text-align: center; /* Centrar el texto */
+}
 
-.hover-galeria img{
+.hover-galeria img {
   width: 50px;
 }
 
-.hover-galeria p{
+.hover-galeria p {
   color: #fff;
+  font-size: 19px; /* Tamaño de fuente del título al pie de la imagen */
+  text-align: center; /* Centrar el texto */
 }
 
-.imagen-port:hover .hover-galeria{
+.imagen-port:hover .hover-galeria {
   transform: scale(1);
 }
+
+
 
 /* Clients */
 
@@ -242,9 +278,13 @@ main .sobre-nosotros{
 }
 
 .cards .card{
-  background: #6be4b2;
+  
   display: flex;
   width: 40%;
+  background: -webkit-linear-gradient(to right, hsla(229, 95%, 63%, 0.459), hsla(150, 62%, 50%, 0.664)), url(/assets/principal.jpg);
+  /* Chrome 10-25, Safari 5.1-6 */                    /*340, 95%, 50%, 0.459*/      /*317, 45%, 52%, 0.664*/
+  background: linear-gradient(to right, hsla(202, 88%, 74%, 0.459), hsla(138, 82%, 67%, 0.664)), url(/assets/principal.jpg);
+  /* W3C, IE 10+/ Edge, Firefox 16+,  */     /*340, 95%, 50%, 0.459*/        /*317, 45%, 52%, 0.664*/
   
   padding: 30px;
   align-items: center;
@@ -253,6 +293,7 @@ main .sobre-nosotros{
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.6);
   text-align: justify;
   justify-self: center;
+  
 }
 
 .cards .card img{
@@ -266,16 +307,23 @@ main .sobre-nosotros{
 
 .cards .card > .contenido-texto-card{
  
-  color: #fff;
+  color: #fcf9f9;
+  font-size: 18px;
 }
 
 .cards .card > .contenido-texto-card p{
   text-align: justify;
   padding-top: 5px;
+  font-weight: bold;
+  
+}
+.cards .card > .contenido-texto-card h4{
+  text-align: center;
+  padding-top: 5px;
+  font-weight: bold;
   
   
 }
-
 /*  Our team */
 
 .about-services{
@@ -298,16 +346,23 @@ main .sobre-nosotros{
 }
 
 .servicio-ind img {
-
-  height: auto; /* Mantiene la proporción de aspecto */
-  padding-bottom: 10px; /* Agregar espacio entre la imagen y el borde inferior del contenedor */
- 
+  width: 200px; /* Establece un ancho fijo */
+  height: 200px; /* Establece una altura fija */
+  object-fit: cover; /* Escala la imagen para que cubra el contenido del contenedor */
+  background: -webkit-linear-gradient(to right, hsla(229, 95%, 63%, 0.459), hsla(150, 62%, 50%, 0.664));
+  /* Chrome 10-25, Safari 5.1-6 */                    /*340, 95%, 50%, 0.459*/      /*317, 45%, 52%, 0.664*/
+  background: linear-gradient(to right, hsla(202, 88%, 74%, 0.459), hsla(138, 82%, 67%, 0.664));
+  padding: 10px;
 }
+
+
+
 
 .servicio-ind h3 {
   
   margin-bottom: 10px; /* Agregar espacio entre el título y el texto */
   margin-right: auto  ;
+  font-size: 20px;
 }
 
 .servicio-ind p {
@@ -315,7 +370,7 @@ main .sobre-nosotros{
   font-weight: 300;
   justify-content: center;
   text-align: justify;
-  font-size: small;
+  font-size: 16px;
   padding: 20px;
 
 }
@@ -366,13 +421,14 @@ footer{
   }
 
   .contenedor-sobre-nosotros{
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Columnas: texto ocupa 2 partes, imagen ocupa 1 parte */
+    gap: 20px; /* Espacio entre columnas */
+    align-items: center; /* Alinea verticalmente */
   }
 
   .sobre-nosotros .contenido-textos{
-    width:90%;
+    width:100%;
 
   }
 
@@ -409,6 +465,7 @@ footer{
   .servicio-ind{
       width: 100%;
       text-align: center;
+      margin-bottom: 30px;
   }
 
   .servicio-ind:nth-child(1), .servicio-ind:nth-child(2){
@@ -542,7 +599,29 @@ footer{
   .titulo-final{
       font-size: 20px;
   }
+ 
 
-  
-  
+ 
+  .primer-contenedor-sobre-nosotros {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Columnas: texto ocupa 2 partes, imagen ocupa 1 parte */
+    gap: 20px; /* Espacio entre columnas */
+    align-items: center; /* Alinea verticalmente */
+}
+
+.contenido-textos {
+  width: 100%;
+    /* Deja que el texto ocupe todo el ancho disponible */
+}
+
+
+
+.imagen-sobre-nosotros img {
+  object-fit: cover;
+  width: 200px; /* Ancho deseado */
+  height: 150px; /* Alto deseado */
+}
+
+
+
 }
