@@ -1,8 +1,8 @@
 <div class="pregunta-container">
   <h1 class="titulo">Inventario de Ansiedad de Beck BAI</h1>
   <hr>
-  <p class="instrucciones">En el cuestionario hay una lista de síntomas comunes de la ansiedad. Lea cada uno de los ítems atentamente, e indique cuanto le ha afectado en la última semana incluyendo hoy:</p>
-  <p class="instrucciones">En cada línea pregunta la opción que mejor describe su reacción a cada oración.</p>
+  <p class="instrucciones"*ngIf="preguntaActual === 0" >En el cuestionario hay una lista de síntomas comunes de la ansiedad. Lea cada uno de los ítems atentamente, e indique cuanto le ha afectado en la última semana incluyendo hoy:</p>
+  <p>En cada línea pregunta la opción que mejor describe su reacción a cada oración.</p>
   
   <div class="pregunta-imagen-container">
     <div class="preguntas">
@@ -23,7 +23,7 @@
   
   <div class="botones-navegacion">
     <button class="boton-atras" (click)="navegarPregunta(-1)" [disabled]="preguntaActual === 0">Atrás</button>
-    <button class="boton-siguiente" (click)="navegarPregunta(1)" [disabled]="preguntaActual === preguntas.length - 1">Siguiente</button>
+    <button class="boton-siguiente" (click)="navegarPregunta(1)" *ngIf="preguntaActual !== preguntas.length - 1">Siguiente</button>
   </div>
 
   <div class="evaluacion-container" *ngIf="preguntaActual === preguntas.length - 1">

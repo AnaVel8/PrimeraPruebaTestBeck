@@ -51,7 +51,7 @@ export interface PreguntaBeck {
       ]
     },
     {
-      pregunta: "6. Maread o que se le va la cabeza",
+      pregunta: "6. Mareado o que se le va la cabeza",
       respuestas: [
         { valor: 0, descripcion: "No " },
         { valor: 1, descripcion: "Leve" },

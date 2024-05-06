@@ -1,14 +1,8 @@
 <div class="pregunta-container">
   <h1 class="titulo">Inventario de Depresión de Beck BDI</h1>
   <hr>
-  <p class="instrucciones">Este cuestionario consta de 21 grupos de afirmaciones. Por favor, lea con
-    atención cada uno de ellos cuidadosamente. Luego elija uno de cada grupo, el que mejor
-    describa el modo como se ha sentido las últimas dos semanas, incluyendo el día de hoy.
-    Marque el enunciado correspondiente, Si varios
-    enunciados de un mismo grupo le parecen igualmente apropiados, marque el número más
-    alto. Verifique que no haya elegido más de uno por grupo, incluyendo el ítem 16 (cambios
-    en los hábitos de Sueño) y el ítem 18 (cambios en el apetito) </p>
-  <p class="instrucciones">En cada línea pregunta la opción que mejor describe su reacción a cada oración.</p>
+  <p class="instrucciones" *ngIf="preguntaActual === 0">Este cuestionario consta de 21 grupos de afirmaciones. Por favor, lea con atención cada uno de ellos cuidadosamente. Luego elija uno de cada grupo, el que mejor describa el modo como se ha sentido las últimas dos semanas, incluyendo el día de hoy. Marque el enunciado correspondiente, Si varios enunciados de un mismo grupo le parecen igualmente apropiados, marque el número más alto. Verifique que no haya elegido más de uno por grupo, incluyendo el ítem 16 (cambios en los hábitos de Sueño) y el ítem 18 (cambios en el apetito)</p>
+  <p>Elije la opción que mejor describe su reacción a cada oración.</p>
 
   <div class="contenido">
     <div class="preguntas">
@@ -23,8 +17,7 @@
       </div>
       <div class="botones-navegacion">
         <button class="boton-atras" (click)="navegarPregunta(-1)" [disabled]="preguntaActual === 0">Atrás</button>
-        <button class="boton-siguiente" (click)="navegarPregunta(1)" [disabled]="preguntaActual === preguntas.length - 1">Siguiente</button>
-       
+        <button class="boton-siguiente" (click)="navegarPregunta(1)" *ngIf="preguntaActual !== preguntas.length - 1">Siguiente</button>
       </div>
       <div class="evaluacion-container" *ngIf="preguntaActual === preguntas.length - 1">
         <button class="boton-finalizar" (click)="evaluarDepresion()">Evaluar Depresion</button>
@@ -35,4 +28,3 @@
     </div>
   </div>
 </div>
-
