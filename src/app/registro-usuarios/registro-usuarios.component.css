@@ -11,3 +11,13 @@ body{
 .btn-secondary {
     margin-left: 10px; /* Puedes ajustar este valor según el espacio deseado */
 }
+
+.btn-dark {
+    background-color: rgb(32, 206, 206);
+    color: white; /* Cambia el color del texto para que sea visible */
+  }
+  
+  .btn-dark:hover {
+    background-color: #00cccc; /* Color de fondo al pasar el mouse */
+  }
+  

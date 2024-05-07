@@ -4,7 +4,7 @@
       <h1 class="titulo">Test de Métodos de Aprendizaje</h1>
       <hr>
       <p class="instrucciones" *ngIf="preguntaActual === 0">Lea cuidadosamente cada oración y piense de qué manera se aplica a usted.</p>
-      <p class="instrucciones">En cada línea pregunta la opción que mejor describe su reacción a cada oración.</p>
+      <p class="instrucciones">En cada línea pregunta la opción que mejor describe su </p>
 
       <div *ngIf="questions.length > 0">
         <div class="pregunta">
@@ -26,11 +26,11 @@
 
   <div class="botones-navegacion">
     <button class="boton-atras" (click)="navegarPregunta(-1)" [disabled]="preguntaActual === 0">Atrás</button>
-    <button class="boton-siguiente" (click)="navegarPregunta(1)" *ngIf="preguntaActual !== preguntas.length - 1">Siguiente</button>
+    <button class="boton-siguiente" (click)="navegarPregunta(1)" *ngIf="preguntaActual !== questions.length - 1">Siguiente</button>
   </div>
 
   <div  class="evaluacion-container" *ngIf="preguntaActual === questions.length - 1">
-    <button class="boton-finalizar" (click)="calculateSum()">Determinar tipo de SPR</button>
+    <button class="boton-finalizar" (click)="calculateSum()">Evaluar</button>
   </div>
 </div>
 

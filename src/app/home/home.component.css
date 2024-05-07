@@ -3,9 +3,12 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif; /* Aplica la fuente Roboto a todos los elementos */
+  
 }
 
-
+.parrafo{
+  color: #666;
+}
 
 
 .a {
@@ -187,6 +190,7 @@ main .sobre-nosotros{
   padding: 0px 0px 30px 15px;
   font-weight: 300;
   text-align: justify;
+  color: #666; /* Color del texto */
 }
 
 /* Galeria */
@@ -239,7 +243,7 @@ main .sobre-nosotros{
   height: 100%;
   top: 0;
   transform: scale(0);
-  background: hsla(189, 82%, 59%, 0.7);
+  background: hsla(177, 82%, 59%, 0.7);
   transition: transform .5s;
   display: flex;
   justify-content: center;
@@ -252,6 +256,7 @@ h5 {
   margin-top: 10px; /* Espaciado superior */
   margin-bottom: 10px; /* Espaciado inferior */
   text-align: center; /* Centrar el texto */
+  color: #666; /* Color del texto */
 }
 
 .hover-galeria img {
@@ -323,6 +328,7 @@ h5 {
   font-weight: bold;
   
   
+  
 }
 /*  Our team */
 
@@ -363,6 +369,7 @@ h5 {
   margin-bottom: 10px; /* Agregar espacio entre el título y el texto */
   margin-right: auto  ;
   font-size: 20px;
+
 }
 
 .servicio-ind p {
@@ -372,6 +379,7 @@ h5 {
   text-align: justify;
   font-size: 16px;
   padding: 20px;
+  color: #666; /* Color del texto */
 
 }
 
@@ -622,6 +630,7 @@ footer{
   height: 150px; /* Alto deseado */
 }
 
-
-
+}
+.swal2-popup {
+  text-align: justify;
 }

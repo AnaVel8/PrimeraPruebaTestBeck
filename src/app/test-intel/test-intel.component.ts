@@ -74,8 +74,42 @@ export class TestIntelComponent {
 
   
   imagenes: string[] = [
-    'assets/images1.jpg',
-    'assets/images2.jpg',
+    'assets/inteligencias/1.png',
+    'assets/inteligencias/2.jpg',
+    'assets/inteligencias/3.jpg',
+    'assets/inteligencias/4.jpg',
+    'assets/inteligencias/5.jpg',
+    'assets/inteligencias/6.jpg',
+    'assets/inteligencias/7.jpg',
+    'assets/inteligencias/8.jpg',
+    'assets/inteligencias/9.jpg',
+    'assets/inteligencias/10.jpg',
+    'assets/inteligencias/11.jpg',
+    'assets/inteligencias/12.jpg',
+    'assets/inteligencias/13.jpg',
+    'assets/inteligencias/14.jpg',
+    'assets/inteligencias/15.jpg',
+    'assets/inteligencias/16.jpg',
+    'assets/inteligencias/17.jpg',
+    'assets/inteligencias/18.jpg',
+    'assets/inteligencias/19.jpg',
+    'assets/inteligencias/20.jpg',
+    'assets/inteligencias/21.jpg',
+    'assets/inteligencias/22.jpg',
+    'assets/inteligencias/23.jpg',
+    'assets/inteligencias/1.png',
+    'assets/inteligencias/2.jpg',
+    'assets/inteligencias/3.jpg',
+    'assets/inteligencias/4.jpg',
+    'assets/inteligencias/5.jpg',
+    'assets/inteligencias/6.jpg',
+    'assets/inteligencias/7.jpg',
+    'assets/inteligencias/8.jpg',
+    'assets/inteligencias/9.jpg',
+    'assets/inteligencias/10.jpg',
+    'assets/inteligencias/11.jpg',
+    'assets/inteligencias/12.jpg',
+    'assets/inteligencias/13.jpg',
     
   ];
 
@@ -155,7 +189,7 @@ export class TestIntelComponent {
 
  Swal.fire({
   icon:'success',
-  title:'RESULTADO SRP',
+  title:'RESULTADO ',
   text: mensaje,
   confirmButtonText: 'OK'
  }).then((result)=>{
