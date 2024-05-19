@@ -5,16 +5,16 @@ const reglasBeck: RuleProperties[] = [
     conditions: {
       all: [
         { fact: 'puntajeTotal', operator: 'greaterThanInclusive', value: 0 },
-        { fact: 'puntajeTotal', operator: 'lessThanInclusive', value: 13 }
+        { fact: 'puntajeTotal', operator: 'lessThanInclusive', value: 7 }
       ]
     },
-    event: { type: 'resultado', params: { resultado: 'Ansiedad aucente o minima' } }
+    event: { type: 'resultado', params: { resultado: 'Ansiedad ausente o mínima' } }
   },
   {
     conditions: {
       all: [
-        { fact: 'puntajeTotal', operator: 'greaterThanInclusive', value: 14 },
-        { fact: 'puntajeTotal', operator: 'lessThanInclusive', value: 19 }
+        { fact: 'puntajeTotal', operator: 'greaterThanInclusive', value: 8 },
+        { fact: 'puntajeTotal', operator: 'lessThanInclusive', value: 15 }
       ]
     },
     event: { type: 'resultado', params: { resultado: 'Ansiedad leve' } }
@@ -22,8 +22,8 @@ const reglasBeck: RuleProperties[] = [
   {
     conditions: {
       all: [
-        { fact: 'puntajeTotal', operator: 'greaterThanInclusive', value: 20 },
-        { fact: 'puntajeTotal', operator: 'lessThanInclusive', value: 28 }
+        { fact: 'puntajeTotal', operator: 'greaterThanInclusive', value: 16 },
+        { fact: 'puntajeTotal', operator: 'lessThanInclusive', value: 25 }
       ]
     },
     event: { type: 'resultado', params: { resultado: 'Ansiedad moderada' } }
@@ -31,7 +31,7 @@ const reglasBeck: RuleProperties[] = [
   {
     conditions: {
       all: [
-        { fact: 'puntajeTotal', operator: 'greaterThanInclusive', value: 29 },
+        { fact: 'puntajeTotal', operator: 'greaterThanInclusive', value: 26 },
         { fact: 'puntajeTotal', operator: 'lessThanInclusive', value: 63 }
       ]
     },

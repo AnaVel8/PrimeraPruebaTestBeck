@@ -2,7 +2,6 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UsuarioService } from '../servicios.service';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
-
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
